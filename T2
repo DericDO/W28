@@ -1,0 +1,38 @@
+package lab3;
+
+import java.util.Scanner;
+
+public class Task2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] grades = new int[20];
+        int gradeCount = 0;
+
+        System.out.println("Enter up to 20 grades (Enter a negative number to stop):");
+        while (gradeCount < 20) {
+            System.out.print("Enter grade #" + (gradeCount + 1) + ": ");
+            int grade = scanner.nextInt();
+            if (grade < 0) {
+                break;
+            }
+            grades[gradeCount] = grade;
+            gradeCount++;
+        }
+
+        int[] enteredGrades = new int[gradeCount];
+        System.arraycopy(grades, 0, enteredGrades, 0, gradeCount);
+
+        double average = Average(enteredGrades);
+        System.out.println("Average Grade: " + average);
+
+        scanner.close();
+    }
+
+    public static double Average(int grades[]) {
+        double sum = 0;
+        for (int grade : grades) {
+            sum += grade;
+        }
+        return sum / grades.length;
+    }
+}
